@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Français Oral | BacPrep 2026</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/cczjjKjc/Tyler-Nicholas-OFFICE-OF-TYLER-NICHOLAS.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: #f8fafc; color: #334155; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navbar */
+        .navbar { height: 70px; background-color: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; z-index: 1000; flex-shrink: 0; }
+        .nav-logo { font-weight: 700; font-size: 1.25rem; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+        .nav-logo img { width: 30px; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; color: #475569; transition: color 0.3s; }
+        .nav-links a:hover { color: #2563eb; }
+
+        /* Layout */
+        .app-container { display: flex; flex-grow: 1; overflow: hidden; }
+
+        /* Sidebar */
+        .sidebar { width: 300px; background-color: #0f172a; color: #cbd5e1; overflow-y: auto; display: flex; flex-direction: column; flex-shrink: 0; }
+        .sidebar-header { padding: 20px; font-weight: 600; color: white; border-bottom: 1px solid #1e293b; position: sticky; top: 0; background: #0f172a; z-index: 10; }
+        .nav-item { padding: 15px 20px; border-bottom: 1px solid #1e293b; cursor: pointer; transition: background 0.2s; font-size: 0.9rem; line-height: 1.4; }
+        .nav-item:hover { background-color: #1e293b; color: white; }
+        .nav-item.active { background-color: #2563eb; color: white; font-weight: 500; border-left: 4px solid #60a5fa; }
+        .nav-item.method-btn { background-color: #047857; border-left: none; margin-top: auto; border-top: 1px solid #1e293b; }
+        .nav-item.method-btn.active { background-color: #059669; }
+
+        /* Main Content */
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; background-color: #f8fafc; }
+        .text-section { display: none; max-width: 900px; margin: 0 auto; animation: fadeIn 0.4s ease-in-out; }
+        .text-section.active { display: block; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .text-title { font-size: 2rem; color: #0f172a; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0; }
+
+        /* Color-Coded Cards */
+        .card { padding: 25px; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); line-height: 1.7; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .card ul { margin-left: 20px; margin-bottom: 15px; }
+        .card li { margin-bottom: 8px; }
+        .card p { margin-bottom: 15px; }
+        .card strong { color: #1e293b; }
+
+        /* Specific Colors for Cognitive Association */
+        .card-elements { background-color: #eff6ff; border-left: 5px solid #3b82f6; } /* Blue */
+        .card-elements h3 { color: #1d4ed8; }
+        
+        .card-intro { background-color: #f0fdf4; border-left: 5px solid #22c55e; } /* Green */
+        .card-intro h3 { color: #15803d; }
+        
+        .card-analyse { background-color: #ffffff; border: 1px solid #e2e8f0; border-top: 5px solid #64748b; } /* Grey/White */
+        .card-analyse h3 { color: #334155; }
+        .mouvement { background: #f8fafc; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #94a3b8; }
+        .mouvement h4 { margin-bottom: 10px; color: #0f172a; }
+        
+        .card-conclusion { background-color: #faf5ff; border-left: 5px solid #a855f7; } /* Purple */
+        .card-conclusion h3 { color: #7e22ce; }
+        
+        .card-grammaire { background-color: #fffbeb; border-left: 5px solid #f59e0b; } /* Orange */
+        .card-grammaire h3 { color: #b45309; }
+
+        .formula { background: #1e293b; color: #60a5fa; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; margin-bottom: 30px; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo">
+            BacPrep 2026 | Français Oral
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../francais-ecrit/index.html">Français Écrit</a></li>
+            <li><a href="../maths/index.html">Mathématiques</a></li>
+        </ul>
+    </nav>
+
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">Sommaire des Textes (16)</div>
+            </div>
+
+        <div class="main-content" id="main-content">
+            </div>
+    </div>
+
+    <script>
+        // Data structure containing all 16 texts + Methodology
+        const textsData = [
+            {
+                id: "texte1",
+                title: "Texte 1 — Arthur Rimbaud, « Vénus anadyomène »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Arthur Rimbaud.</li>
+                    <li><strong>Date ou siècle :</strong> 1870, XIXe siècle.</li>
+                    <li><strong>Genre littéraire :</strong> poème, sonnet irrégulier.</li>
+                    <li><strong>Mouvement :</strong> Rimbaud hérite du romantisme/Parnasse, annonce le symbolisme. Poète de rupture.</li>
+                    <li><strong>Œuvre :</strong> Les Cahiers de Douai (recueil de jeunesse). Détournement des formes classiques.</li>
+                    <li><strong>Figure principale :</strong> Vénus dégradée observée par une voix poétique caricaturale.</li>
+                    <li><strong>Thèmes :</strong> Laideur, corps, provocation, mythe détourné, contre-blason.</li>
+                    <li><strong>Parcours associé :</strong> « Émancipations créatrices ». La poésie traite du laid et du trivial.</li>
+                    <li><strong>Citations clés :</strong> « cercueil », « vieille baignoire », corps lourd, « Clara Venus ».</li>
+                    <li><strong>Jugement :</strong> Renversement des attentes, redéfinit la beauté poétique.</li>
+                </ul>`,
+                intro: `<p>Arthur Rimbaud est un poète du XIXe siècle, connu pour sa précocité et pour sa volonté de renouveler la poésie. Il écrit Les Cahiers de Douai vers 1870. Ce recueil montre son désir de liberté.<br><br>
+                Le poème « Vénus anadyomène » renvoie à la figure mythologique de Vénus sortant des eaux, symbole de beauté. Pourtant, Rimbaud détourne cette image noble : il décrit un corps grotesque sortant d’une vieille baignoire.<br><br>
+                <strong>Problématique :</strong> Comment Rimbaud détourne-t-il le mythe de Vénus pour remettre en question l’idéal traditionnel de beauté poétique ?<br><br>
+                <strong>Mouvements :</strong> (1) Une apparition parodique et inquiétante, (2) un portrait grotesque du corps, (3) une chute provocatrice.</p>`,
+                analyse: `<div class="mouvement"><h4>Mouvement 1 — Une apparition parodique et inquiétante</h4>
+                <p><strong>Lignes 1 à 4 :</strong> Titre mythologique (attente de beauté) vs « cercueil » (macabre, évoque la mort). La « vieille baignoire » dégrade le décor (banal/sale). Les détails de la tête insistent sur l'artifice.</p></div>
+                <div class="mouvement"><h4>Mouvement 2 — Un portrait grotesque du corps</h4>
+                <p><strong>Lignes 5 à 11 :</strong> Utilisation du contre-blason. Adjectifs de lourdeur/saleté, mouvements déséquilibrés. Le corps est montré sans idéalisation (graisse). L'animalisation accentue le grotesque.</p></div>
+                <div class="mouvement"><h4>Mouvement 3 — Une chute provocatrice</h4>
+                <p><strong>Lignes 12 à 14 :</strong> Inscription ironique « Clara Venus ». Insistance sur le bas du corps. L'oxymore final associe beauté et laideur, inventant une nouvelle esthétique.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Rimbaud détourne le mythe en remplaçant la beauté idéale par un portrait grotesque (contre-blason). Cette provocation illustre les « émancipations créatrices » en libérant la poésie des règles traditionnelles du beau.<br><br>
+                <strong>Ouverture :</strong> Rapprochement avec « Le Dormeur du val » (surprise finale et renversement des attentes).</p>`,
+                grammaire: `<ul>
+                    <li><strong>« qui saillent » :</strong> Proposition subordonnée relative. Introduite par « qui ». Antécédent : omoplates.</li>
+                    <li><strong>« vieille » (baignoire) :</strong> Adjectif qualificatif. Donne une image dégradée.</li>
+                    <li><strong>Comparaison :</strong> Avec le « cercueil ». Transforme l'apparition divine en scène macabre.</li>
+                </ul>`
+            },
+            {
+                id: "texte2",
+                title: "Texte 2 — Arthur Rimbaud, « Le Dormeur du val »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Arthur Rimbaud.</li>
+                    <li><strong>Date ou siècle :</strong> 1870, XIXe siècle.</li>
+                    <li><strong>Genre littéraire :</strong> poème, sonnet.</li>
+                    <li><strong>Mouvement :</strong> Poésie de rupture.</li>
+                    <li><strong>Œuvre :</strong> Les Cahiers de Douai.</li>
+                    <li><strong>Personnage :</strong> Un soldat (dormeur puis révélé mort).</li>
+                    <li><strong>Thèmes :</strong> Nature, guerre, mort, innocence, dénonciation indirecte.</li>
+                    <li><strong>Parcours :</strong> S'émancipe de la poésie héroïque. Montre la violence par une révélation finale.</li>
+                    <li><strong>Citations :</strong> « deux trous rouges », vallée lumineuse, sourire ambigu.</li>
+                    <li><strong>Jugement :</strong> Dénonciation indirecte ; le lecteur découvre l'horreur par lui-même.</li>
+                </ul>`,
+                intro: `<p>Écrit en 1870 (guerre franco-prussienne). Le poème se présente d’abord comme une description paisible (nature accueillante, jeune soldat endormi), mais la chute révèle sa mort, donnant une dimension tragique et politique.<br><br>
+                <strong>Problématique :</strong> Comment la chute du sonnet transforme-t-elle une scène paisible en dénonciation de la guerre ?<br><br>
+                <strong>Mouvements :</strong> (1) Description d'une nature accueillante, (2) portrait ambigu du dormeur, (3) révélation finale de la mort.</p>`,
+                analyse: `<div class="mouvement"><h4>Mouvement 1 — Une nature accueillante</h4>
+                <p><strong>Lignes 1 à 4 :</strong> Cadre paisible/protecteur (eau, verdure, lumière). Personnification de la nature.</p></div>
+                <div class="mouvement"><h4>Mouvement 2 — Un portrait ambigu du soldat</h4>
+                <p><strong>Lignes 5 à 11 :</strong> Portrait d'un jeune homme. L'harmonie nature/corps est trompeuse. Des détails deviennent inquiétants (pâleur, immobilité, froid) et annoncent la mort.</p></div>
+                <div class="mouvement"><h4>Mouvement 3 — La révélation finale</h4>
+                <p><strong>Lignes 12 à 14 :</strong> Négation (ne réagit pas). Chute (« deux trous rouges ») : la violence surgit dans un décor paisible.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Contraste entre beauté de la nature et horreur de la guerre. Dénonciation indirecte mais puissante.<br><br>
+                <strong>Ouverture :</strong> Rapprochement avec « Vénus anadyomène » (renversement des attentes via le sonnet).</p>`,
+                grammaire: `<ul>
+                    <li><strong>Valeur du présent :</strong> Présent de description (scène sous nos yeux).</li>
+                    <li><strong>Personnification :</strong> La nature agit/protège, présence presque maternelle.</li>
+                    <li><strong>Négation :</strong> Montre que le soldat ne réagit plus (prépare la chute).</li>
+                </ul>`
+            },
+            {
+                id: "texte3",
+                title: "Texte 3 — Aloysius Bertrand, « Un Rêve »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Aloysius Bertrand.</li>
+                    <li><strong>Siècle :</strong> 1842, XIXe siècle.</li>
+                    <li><strong>Genre :</strong> Poème en prose.</li>
+                    <li><strong>Mouvement :</strong> Romantisme noir (précurseur symbolisme/surréalisme).</li>
+                    <li><strong>Œuvre :</strong> Gaspard de la nuit.</li>
+                    <li><strong>Personnage :</strong> Narrateur-rêveur.</li>
+                    <li><strong>Thèmes :</strong> Cauchemar, imagination, fantastique, pouvoir de la poésie.</li>
+                    <li><strong>Parcours :</strong> Émancipation du vers traditionnel ; la poésie existe dans la prose.</li>
+                    <li><strong>Citations :</strong> Rêve indéfini, univers nocturne, réveil.</li>
+                    <li><strong>Jugement :</strong> La poésie organise le désordre du rêve.</li>
+                </ul>`,
+                intro: `<p>Aloysius Bertrand, avec Gaspard de la nuit, développe le poème en prose. « Un Rêve » raconte un cauchemar médiéval, rempli de visions et de sons menaçants.<br><br>
+                <strong>Problématique :</strong> Comment le poème en prose transforme-t-il le rêve en expérience poétique inquiétante ?<br><br>
+                <strong>Mouvements :</strong> (1) L’entrée dans un univers onirique, (2) l’organisation du rêve par l’écriture, (3) la chute/pouvoir de l'imagination.</p>`,
+                analyse: `<div class="mouvement"><h4>Mouvement 1 — L’entrée dans un univers de rêve</h4>
+                <p>Déterminant indéfini (« Un » Rêve). Atmosphère nocturne. Narrateur à la 1ère personne (témoin d'une vision confuse).</p></div>
+                <div class="mouvement"><h4>Mouvement 2 — Un rêve organisé par la poésie</h4>
+                <p>Accumulation imitant la logique rapide du rêve. Décor médiéval et fantastique. Champ lexical du bruit, de la plainte et de la mort (peur et violence).</p></div>
+                <div class="mouvement"><h4>Mouvement 3 — La chute et le pouvoir de l’imagination</h4>
+                <p>Rupture narrative (réveil). L'eau/pluie symbolise la disparition du rêve. Ouverture finale : la poésie prolonge l'imaginaire.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Transformation d'un cauchemar en expérience poétique. S'émancipe du vers pour créer un pouvoir par les images et l'atmosphère.<br><br>
+                <strong>Ouverture :</strong> Rapprochement avec Rimbaud (recherche de liberté poétique).</p>`,
+                grammaire: `<ul>
+                    <li><strong>Subordonnée :</strong> Dépend d'une proposition principale.</li>
+                    <li><strong>Passé simple :</strong> Raconte des actions terminées dans un récit.</li>
+                    <li><strong>Accumulation :</strong> Suite de mots donnant une impression d'abondance.</li>
+                </ul>`
+            },
+            {
+                id: "texte4",
+                title: "Texte 4 — Raymond Queneau, « Si tu t’imagines… »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Raymond Queneau.</li>
+                    <li><strong>Siècle :</strong> 1946, XXe siècle.</li>
+                    <li><strong>Genre :</strong> Poème moderne / chanson.</li>
+                    <li><strong>Mouvement :</strong> Modernité (proche Oulipo).</li>
+                    <li><strong>Œuvre :</strong> L’Instant fatal.</li>
+                    <li><strong>Personnage :</strong> Voix s'adressant à une jeune fille.</li>
+                    <li><strong>Thèmes :</strong> Temps, jeunesse, carpe diem, humour.</li>
+                    <li><strong>Parcours :</strong> Émancipation de la poésie solennelle par la familiarité.</li>
+                    <li><strong>Citations :</strong> Parodie de Ronsard, illusion de jeunesse, ton oral.</li>
+                    <li><strong>Jugement :</strong> Traite un sujet grave avec humour et modernité.</li>
+                </ul>`,
+                intro: `<p>Queneau (XXe siècle) renouvelle le thème ancien du « carpe diem ». Il utilise une langue familière, un rythme de chanson et un ton drôle/cruel pour mettre en garde une jeune fille sur la fuite du temps.<br><br>
+                <strong>Problématique :</strong> Comment Queneau renouvelle-t-il le thème traditionnel du carpe diem ?<br><br>
+                <strong>Mouvements :</strong> (1) Avertissement à la jeune fille, (2) portrait de sa jeunesse, (3) mise en garde contre la vieillesse.</p>`,
+                analyse: `<div class="mouvement"><h4>Mouvement 1 — Une adresse à la jeune fille</h4>
+                <p>Apostrophe (2e pers). Formule hypothétique (corriger une illusion). Les répétitions créent un effet de refrain musical.</p></div>
+                <div class="mouvement"><h4>Mouvement 2 — Un portrait de la jeunesse</h4>
+                <p>Blason modernisé. Mélange de registres (mots familiers). Ton ironique : admire la jeunesse mais rappelle sa fragilité.</p></div>
+                <div class="mouvement"><h4>Mouvement 3 — Le temps qui détruit la beauté</h4>
+                <p>Contre-blason dévalorisant (vieillesse). Injonction (impératif) à profiter de la vie. L'humour rend la leçon légère et moderne.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Renouvellement du carpe diem par l'oralité et l'humour. Rappel éphémère de la jeunesse de façon presque chantée.<br><br>
+                <strong>Ouverture :</strong> Ronsard (thème classique de la fuite du temps) ou Rimbaud (libération du ton classique).</p>`,
+                grammaire: `<ul>
+                    <li><strong>Proposition conditionnelle :</strong> Exprime une condition (introduite par « si »).</li>
+                    <li><strong>Impératif :</strong> Ordre, conseil ou invitation.</li>
+                    <li><strong>Registre familier :</strong> Proche de l'oral et de la conversation.</li>
+                </ul>`
+            },
+            {
+                id: "texte5",
+                title: "Texte 5 — Abbé Prévost, Manon Lescaut, « La rencontre »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Abbé Prévost.</li>
+                    <li><strong>Siècle :</strong> 1731, XVIIIe siècle.</li>
+                    <li><strong>Genre :</strong> Roman-mémoires.</li>
+                    <li><strong>Mouvement :</strong> Lumières (roman sensible).</li>
+                    <li><strong>Thèmes :</strong> Coup de foudre, passion, fatalité, marginalité.</li>
+                    <li><strong>Parcours :</strong> Personnages en marge (Des Grieux entre dans la marginalité ici).</li>
+                    <li><strong>Citations :</strong> Coup de foudre, annonce des malheurs.</li>
+                </ul>`,
+                intro: `<p>Histoire tragique de Des Grieux et Manon. L'extrait est la première rencontre à Amiens, marquant le début de la passion et des malheurs du narrateur.<br><br>
+                <strong>Problématique :</strong> Comment cette scène présente-t-elle l’amour comme une force romanesque et fatale ?<br><br>
+                <strong>Mouvements :</strong> (1) Circonstances, (2) coup de foudre visuel, (3) dialogue tragique.</p>`,
+                analyse: `<div class="mouvement"><h4>Mouvement 1 & 2 & 3</h4>
+                <p><strong>1:</strong> Récit rétrospectif (regret). Effet de réel avec Tiberge.<br><strong>2:</strong> Manon isolée (unique). Focalisation interne (regard fasciné de Des Grieux). Hyperboles de la passion.<br><strong>3:</strong> Obstacle du couvent. Prolepse (annonce des malheurs futurs).</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Rencontre romanesque et fatale. Entrée dans la marginalité.<br><strong>Ouverture :</strong> Parcours "personnages en marge".</p>`,
+                grammaire: `<ul><li><strong>Conditionnel passé :</strong> Regret d'une action qui n'a pas eu lieu.</li><li><strong>Prolepse :</strong> Annonce d'un événement futur.</li><li><strong>Discours :</strong> Direct (paroles telles quelles) vs Indirect (intégrées au narrateur).</li></ul>`
+            },
+            {
+                id: "texte6",
+                title: "Texte 6 — Abbé Prévost, Manon Lescaut, « Les plaintes d’un amant »",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Abbé Prévost (1731).</li>
+                    <li><strong>Thèmes :</strong> Passion, reproche, souffrance, trahison, dépendance.</li>
+                    <li><strong>Parcours :</strong> Marginalité intérieure (perte de la maîtrise de soi).</li>
+                </ul>`,
+                intro: `<p>Des Grieux reproche à Manon sa trahison. Amant partagé entre amour, colère et désespoir.<br><br><strong>Problématique :</strong> Comment la plainte révèle-t-elle la violence destructrice de la passion ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Reproches):</strong> Apostrophe, répétition obsessionnelle du prénom, hyperboles de souffrance, questions rhétoriques.<br><strong>2 (Réaction de Manon):</strong> Réaction pragmatique, dialogue conflictuel (incompréhension).<br><strong>3 (Colère):</strong> Décision théâtrale de partir, mais fragile. Registre pathétique (passion > raison).</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Des Grieux prisonnier de son amour (marginalité intérieure).<br><strong>Ouverture :</strong> Contraste avec la scène de rencontre (amour merveilleux devenu destructeur).</p>`,
+                grammaire: `<ul><li><strong>Apostrophe :</strong> S'adresser directement à qqn.</li><li><strong>Question rhétorique :</strong> N'attend pas de réponse.</li><li><strong>Exclamation :</strong> Exprime une émotion forte.</li></ul>`
+            },
+            {
+                id: "texte7",
+                title: "Texte 7 — Stendhal, Le Rouge et le Noir, ch. 4",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Stendhal (1830).</li>
+                    <li><strong>Mouvement :</strong> Réalisme naissant.</li>
+                    <li><strong>Thèmes :</strong> Marginalité, ambition, lecture, différence.</li>
+                </ul>`,
+                intro: `<p>Julien Sorel, ambitieux, apparaît dans sa famille. Différent (il aime lire), ce qui le rend marginal et provoque la violence de son père.<br><br><strong>Problématique :</strong> Comment Stendhal présente-t-il Julien comme marginal et ambitieux ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Cadre):</strong> Univers manuel rude, autorité du père.<br><strong>2 (Différence):</strong> Le livre (symbole d'intellect). Isolé physiquement et moralement de ses frères.<br><strong>3 (Violence):</strong> Brutalité du père rejetant la lecture. Julien humilié mais supérieur par l'esprit. Le livre devient son arme.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Marginalité par inadaptation à son milieu. Annonce un destin exceptionnel.<br><strong>Ouverture :</strong> Rapprochement avec Des Grieux (élévation par l'ambition vs amour).</p>`,
+                grammaire: `<ul><li><strong>Focalisation :</strong> Point de vue du récit.</li><li><strong>Adjectif :</strong> Qualifie un nom.</li><li><strong>Complément du nom :</strong> Introduit par une préposition (« de »).</li></ul>`
+            },
+            {
+                id: "texte8",
+                title: "Texte 8 — Flaubert, Madame Bovary, ch. 12",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Flaubert (1857).</li>
+                    <li><strong>Thèmes :</strong> Ennui, illusion romantique, adultère, fuite.</li>
+                </ul>`,
+                intro: `<p>Emma fuit mentalement son quotidien banal. Son rêve révèle son insatisfaction.<br><br><strong>Problématique :</strong> Comment Flaubert montre-t-il l’écart entre le rêve d’Emma et la réalité ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Faux-semblants):</strong> Elle feint de dormir. Séparation intérieure du couple. Narration distante.<br><strong>2 (Rêverie):</strong> Champ lexical du déplacement/exotisme. Clichés romantiques.<br><strong>3 (Retour au réel):</strong> Rupture. Réalité banale (contraste). Ironie du narrateur sur l'illusion.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Marginalité intérieure nourrie par l'illusion romanesque incapable d'accepter le réel.<br><strong>Ouverture :</strong> Manon ou Des Grieux (désir d'une vie hors normes).</p>`,
+                grammaire: `<ul><li><strong>Imparfait :</strong> Description/arrière-plan.</li><li><strong>Parallélisme :</strong> Construction semblable répétée (opposition).</li><li><strong>Focalisation interne :</strong> Pensées du personnage.</li></ul>`
+            },
+            {
+                id: "texte9",
+                title: "Texte 9 — Nathalie Sarraute, Pour un oui ou pour un non (Origines)",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Sarraute (1982).</li>
+                    <li><strong>Mouvement :</strong> Nouveau Roman / théâtre du langage.</li>
+                    <li><strong>Thèmes :</strong> Non-dit, intonation, dispute, amitié blessée.</li>
+                </ul>`,
+                intro: `<p>H1 cherche à comprendre pourquoi H2 s'est éloigné. La dispute naît d'un détail verbal.<br><br><strong>Problématique :</strong> Comment Sarraute transforme-t-elle un détail de langage en conflit théâtral ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Explication):</strong> Répliques courtes (tension). Pression de H1.<br><strong>2 (Blessure de H2):</strong> Importance du sous-entendu (ton > mots). Décalage cause/effet. Hésitations (difficile à dire).<br><strong>3 (Impossible à prouver):</strong> H1 minimise. Le dialogue tourne en rond et aggrave le conflit.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Paroles ordinaires cachant des blessures. La dispute naît de l'implicite.<br><strong>Ouverture :</strong> Le Misanthrope (dispute verbale mais ici psychologique).</p>`,
+                grammaire: `<ul><li><strong>Interrogative :</strong> Pose une question/tension.</li><li><strong>Phrases courtes :</strong> Rythme rapide/conflit.</li><li><strong>Répétition :</strong> Insistance/obsession.</li></ul>`
+            },
+            {
+                id: "texte10",
+                title: "Texte 10 — Nathalie Sarraute, (Crise en miroir)",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Sarraute (1982).</li>
+                    <li><strong>Thèmes :</strong> Répétition, miroir, ressentiment, impasse.</li>
+                </ul>`,
+                intro: `<p>Une deuxième crise éclate, répétant la première. Le mécanisme de blessure recommence.<br><br><strong>Problématique :</strong> Comment cette 2e crise montre-t-elle un mécanisme impossible à arrêter ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Tension):</strong> Rythme haché, méfiance mutuelle.<br><strong>2 (Miroir):</strong> Surinterprétation du langage (danger). Le passé empêche la réconciliation.<br><strong>3 (Impasse):</strong> Dialogue bloqué, opposition des points de vue. Échec total de la communication.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Le conflit s'enferme dans un cycle. Violence des non-dits.<br><strong>Ouverture :</strong> Misanthrope (conception de la parole).</p>`,
+                grammaire: `<ul><li><strong>Exclamative :</strong> Émotion forte.</li><li><strong>Répétition :</strong> Personnages bloqués.</li><li><strong>Pronom personnel :</strong> Remplace/désigne une personne (je, tu).</li></ul>`
+            },
+            {
+                id: "texte11",
+                title: "Texte 11 — Corneille, Cinna, monologue d'Émilie",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Corneille (1643).</li>
+                    <li><strong>Mouvement :</strong> Classicisme.</li>
+                    <li><strong>Thèmes :</strong> Vengeance, devoir, passion, politique.</li>
+                </ul>`,
+                intro: `<p>Émilie exprime son désir de vengeance contre Auguste. Conflit tragique interne.<br><br><strong>Problématique :</strong> Comment le monologue transforme-t-il la vengeance en conflit tragique ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Douleur):</strong> Souvenir du père, registre tragique intense.<br><strong>2 (Devoir):</strong> Vengeance comme nécessité morale. Rythme oratoire (détermination).<br><strong>3 (Politique):</strong> Tuer Auguste = acte contre le pouvoir. Dilemme tragique préparant l'action.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Dispute intérieure entre douleur, devoir et pouvoir. Souffrance personnelle devient enjeu politique.<br><strong>Ouverture :</strong> Sarraute (tension intérieure vs ordinaire).</p>`,
+                grammaire: `<ul><li><strong>Monologue :</strong> Personnage parlant seul.</li><li><strong>Exclamative :</strong> Émotion forte.</li><li><strong>Impératif :</strong> Ordre/injonction.</li></ul>`
+            },
+            {
+                id: "texte12",
+                title: "Texte 12 — Molière, Le Misanthrope, scène 1",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Molière (1666).</li>
+                    <li><strong>Thèmes :</strong> Sincérité, hypocrisie, excès, comique.</li>
+                </ul>`,
+                intro: `<p>Alceste et Philinte s'opposent sur la sincérité absolue vs la politesse sociale.<br><br><strong>Problématique :</strong> Comment Molière transforme-t-il un désaccord moral en dispute comique ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Opposition):</strong> Alceste excessif (absolu) vs Philinte modéré.<br><strong>2 (Critique):</strong> Satire des formules hypocrites par Alceste, argument de survie en société par Philinte.<br><strong>3 (Comique):</strong> L'hyperbole d'Alceste le rend ridicule. Contraste de caractères (scène d'exposition).</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Comique fondé sur l'excès tout en posant une question sérieuse sur la vérité sociale.<br><strong>Ouverture :</strong> Sarraute (conflit moral/social vs psy).</p>`,
+                grammaire: `<ul><li><strong>Réplique :</strong> Parole au théâtre.</li><li><strong>Hyperbole :</strong> Exagération.</li><li><strong>Scène d'exposition :</strong> Présente persos/conflits.</li></ul>`
+            },
+            {
+                id: "texte13",
+                title: "Texte 13 — Graffigny, Lettres d'une Péruvienne (L'apparence)",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Graffigny (1747).</li>
+                    <li><strong>Mouvement :</strong> Lumières.</li>
+                    <li><strong>Thèmes :</strong> Apparence, mode, regard étranger, superficialité.</li>
+                </ul>`,
+                intro: `<p>Zilia, Péruvienne, observe la France et critique l'importance des apparences.<br><br><strong>Problématique :</strong> Comment le regard étranger permet-il de critiquer le règne des apparences ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Étonnement):</strong> Regard extérieur rendant l'évident étrange.<br><strong>2 (Critique):</strong> Opposition être/paraître. Ironie sur la superficialité.<br><strong>3 (Morale/Social):</strong> L'apparence devient un pouvoir. Zilia devient une conscience éclairée jugeant le système.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Dénonciation du paraître français via la littérature d'idées.<br><strong>Ouverture :</strong> Montesquieu, Lettres persanes (même procédé).</p>`,
+                grammaire: `<ul><li><strong>Déclarative :</strong> Donne une info.</li><li><strong>Champ lexical :</strong> Mots sur un même thème.</li><li><strong>Ironie :</strong> Dire le contraire pour se moquer.</li></ul>`
+            },
+            {
+                id: "texte14",
+                title: "Texte 14 — Graffigny, Lettres d'une Péruvienne (Le système politique)",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Graffigny (1747).</li>
+                    <li><strong>Thèmes :</strong> Pouvoir, inégalité, injustice, regard critique.</li>
+                </ul>`,
+                intro: `<p>Zilia observe l'organisation sociale française et en dénonce les injustices.<br><br><strong>Problématique :</strong> Comment le regard extérieur dénonce-t-il les injustices du système politique ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Observation):</strong> Description factuelle et objective au premier abord.<br><strong>2 (Inégalités):</strong> Antithèses (riches/pauvres). Champ lexical de la soumission. Émotion morale.<br><strong>3 (Voix critique):</strong> Zilia applique la réflexion à elle-même et condamne le système (esprit des Lumières).</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Réflexion politique transformée en critique morale sur l'injustice.<br><strong>Ouverture :</strong> Bougainville (comparaison de cultures).</p>`,
+                grammaire: `<ul><li><strong>Antithèse :</strong> Opposition.</li><li><strong>Subordonnée circonstancielle :</strong> Donne temps, cause, etc.</li><li><strong>Interrogation rhétorique :</strong> Critique sans réponse.</li></ul>`
+            },
+            {
+                id: "texte15",
+                title: "Texte 15 — Bougainville, Voyage autour du monde",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Bougainville (1771).</li>
+                    <li><strong>Mouvement :</strong> Lumières.</li>
+                    <li><strong>Thèmes :</strong> Altérité, liberté, bon sauvage, nature vs Europe.</li>
+                </ul>`,
+                intro: `<p>Bougainville décrit les Tahitiens, faisant l'éloge d'une société naturelle et libre.<br><br><strong>Problématique :</strong> Comment la description fait-elle l'éloge d'un mode de vie différent de l'Europe ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Beauté naturelle):</strong> Portrait mélioratif, nudité sans honte, lexique positif.<br><strong>2 (Critique de l'Europe):</strong> Opposition nature/artifice européen. Étonnement du voyageur face à cette simplicité.<br><strong>3 (Partage):</strong> Remise en cause de la propriété privée (« tout est à tous »). Société harmonieuse.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Éloge du bon sauvage servant de critique indirecte des artifices européens.<br><strong>Ouverture :</strong> Zilia dans Lettres d'une Péruvienne.</p>`,
+                grammaire: `<ul><li><strong>Présent de vérité générale :</strong> Idée toujours vraie.</li><li><strong>Comparaison :</strong> Rapprochement avec outil.</li><li><strong>Mélioratif :</strong> Image positive.</li></ul>`
+            },
+            {
+                id: "texte16",
+                title: "Texte 16 — Montesquieu, Lettres persanes, lettre 99",
+                elements: `<ul>
+                    <li><strong>Auteur :</strong> Montesquieu (1721).</li>
+                    <li><strong>Thèmes :</strong> Mode, instabilité, satire sociale, imitation.</li>
+                </ul>`,
+                intro: `<p>Rica (Persan) décrit la mode française de façon satirique pour critiquer l'instabilité et l'apparence.<br><br><strong>Problématique :</strong> Comment le regard étranger fait-il la satire de la mode et de la société ?</p>`,
+                analyse: `<div class="mouvement"><p><strong>1 (Étonnement):</strong> Cadre épistolaire authentique. L'absurdité frappe l'étranger (lexique du caprice).<br><strong>2 (Comique):</strong> Accumulation/hyperboles sur la vitesse des changements (femmes comme exemple).<br><strong>3 (Critique globale):</strong> La mode symbolise une société instable d'imitation aveugle. Effet de dépaysement pour le lecteur français.</p></div>`,
+                conclusion: `<p><strong>Conclusion :</strong> Satire de l'instabilité sociale par le biais comique de la mode.<br><strong>Ouverture :</strong> Graffigny (regard étranger sur les apparences).</p>`,
+                grammaire: `<ul><li><strong>Lettre épistolaire :</strong> Fait avancer le récit.</li><li><strong>Hyperbole :</strong> Exagération.</li><li><strong>Péjoratif :</strong> Image négative.</li></ul>`
+            },
+            {
+                id: "methodologie",
+                title: "Méthode finale à appliquer le jour de l’oral",
+                elements: "", intro: "", analyse: "", conclusion: "", grammaire: "",
+                customContent: `
+                <div class="formula">
+                    Formule simple à toujours utiliser :<br>
+                    Citation courte → procédé → interprétation → lien avec la problématique.
+                </div>
+                
+                <div class="card card-elements">
+                    <h3>1. Pendant les 30 minutes de préparation</h3>
+                    <ul>
+                        <li>Tu lis le texte une première fois pour comprendre le sens général.</li>
+                        <li>Tu identifies : auteur, œuvre, siècle, genre, objet d’étude, parcours.</li>
+                        <li>Tu trouves la problématique.</li>
+                        <li>Tu divises le texte en 2 ou 3 mouvements.</li>
+                        <li>Tu notes pour chaque mouvement : 2 ou 3 citations courtes, le procédé, l’interprétation.</li>
+                        <li>Tu prépares une conclusion avec ouverture.</li>
+                        <li>Tu prépares une réponse simple à la grammaire.</li>
+                    </ul>
+                </div>
+                <div class="card card-intro">
+                    <h3>2. Pendant les 12 minutes d’explication</h3>
+                    <ul>
+                        <li>Tu présentes l’auteur et l’œuvre.</li>
+                        <li>Tu remets le passage dans son contexte.</li>
+                        <li>Tu lis le texte clairement.</li>
+                        <li>Tu annonces la problématique et les mouvements.</li>
+                        <li>Tu fais ton analyse dans l’ordre du texte et tu conclus proprement.</li>
+                    </ul>
+                </div>
+                <div class="card card-grammaire">
+                    <h3>3. Pendant la question de grammaire</h3>
+                    <p>Réponds simplement. Utilise cette structure :</p>
+                    <ul>
+                        <li>« C’est ... »</li>
+                        <li>« Il est introduit par ... »</li>
+                        <li>« Sa fonction est ... »</li>
+                        <li>« Son effet dans le texte est ... »</li>
+                    </ul>
+                </div>
+                <div class="card card-analyse">
+                    <h3>4. Pendant l’entretien</h3>
+                    <p>La meilleure structure :</p>
+                    <ul>
+                        <li>J’ai choisi cette œuvre parce que...</li>
+                        <li>Ce qui m’a marqué, c’est...</li>
+                        <li>Elle correspond au parcours parce que...</li>
+                        <li>Un passage important montre que...</li>
+                        <li>Mon jugement personnel est que...</li>
+                    </ul>
+                </div>
+                <div class="card card-conclusion">
+                    <h3>5. Règles pour viser 20/20</h3>
+                    <ul>
+                        <li>Ne paraphrase pas. Analyse.</li>
+                        <li>Ne cite pas un procédé sans expliquer son effet.</li>
+                        <li>Reviens toujours à la problématique.</li>
+                        <li>Montre que tu connais l’œuvre complète, pas seulement l’extrait.</li>
+                        <li>Tu as besoin d’une pensée claire, de phrases correctes et d’une vraie maîtrise.</li>
+                    </ul>
+                </div>`
+            }
+        ];
+
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+
+        // Générer le menu et le contenu
+        textsData.forEach((data, index) => {
+            // Sidebar item
+            const navItem = document.createElement('div');
+            navItem.className = `nav-item ${data.id === 'methodologie' ? 'method-btn' : ''}`;
+            navItem.innerText = data.id === 'methodologie' ? "📌 Méthodologie" : `Texte ${index + 1} - ${data.title.split('—')[1].trim()}`;
+            navItem.onclick = () => showContent(data.id, navItem);
+            sidebar.appendChild(navItem);
+
+            // Main content section
+            const section = document.createElement('div');
+            section.id = data.id;
+            section.className = 'text-section';
+            
+            if(data.customContent) {
+                section.innerHTML = `<h2 class="text-title">${data.title}</h2>${data.customContent}`;
+            } else {
+                section.innerHTML = `
+                    <h2 class="text-title">${data.title}</h2>
+                    
+                    <div class="formula">
+                        Formule : Citation courte → procédé → interprétation → lien avec la problématique.
+                    </div>
+
+                    <div class="card card-elements">
+                        <h3>1. Les 10 éléments à connaître</h3>
+                        ${data.elements}
+                    </div>
+
+                    <div class="card card-intro">
+                        <h3>2. Introduction prête à apprendre</h3>
+                        ${data.intro}
+                    </div>
+
+                    <div class="card card-analyse">
+                        <h3>3. Analyse linéaire</h3>
+                        ${data.analyse}
+                    </div>
+
+                    <div class="card card-conclusion">
+                        <h3>4. Conclusion + ouverture</h3>
+                        ${data.conclusion}
+                    </div>
+
+                    <div class="card card-grammaire">
+                        <h3>5. Questions possibles de grammaire</h3>
+                        ${data.grammaire}
+                    </div>
+                `;
+            }
+            mainContent.appendChild(section);
+
+            // Activer le premier élément par défaut
+            if(index === 0) {
+                navItem.classList.add('active');
+                section.classList.add('active');
+            }
+        });
+
+        function showContent(id, clickedItem) {
+            // Désactiver tous les éléments
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.text-section').forEach(el => el.classList.remove('active'));
+            
+            // Activer l'élément cliqué
+            clickedItem.classList.add('active');
+            document.getElementById(id).classList.add('active');
+            
+            // Scroll en haut
+            mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
