@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BacPrep 2026 | By Tyler Nicholas</title>
+    <title>BacPrep 2026 | Par Tyler Nicholas</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/cczjjKjc/Tyler-Nicholas-OFFICE-OF-TYLER-NICHOLAS.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -19,7 +19,7 @@
         body {
             background-color: #f8fafc;
             color: #334155;
-            padding-top: 70px; /* Offset for fixed navbar */
+            padding-top: 70px;
         }
 
         a {
@@ -134,6 +134,13 @@
             font-size: 1.25rem;
             color: #0f172a;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo img {
+            width: 30px;
         }
 
         .nav-links {
@@ -182,7 +189,6 @@
             font-weight: 300;
         }
 
-        /* Profile Section */
         .profile-container {
             display: flex;
             align-items: center;
@@ -204,33 +210,188 @@
             object-fit: cover;
         }
 
-        /* Subject Grid */
-        .container {
-            max-width: 1200px;
-            margin: -50px auto 50px auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
+        /* Academic Framework (Logos) */
+        .academic-framework {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .academic-framework p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .logos-container img {
+            height: 60px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .logos-container img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #64748b;
+        }
+
+        /* Motivation Section */
+        .motivation-box {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation-box::before {
+            content: '"';
+            font-size: 120px;
+            color: rgba(255,255,255,0.05);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        .motivation-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motivation-box strong {
+            display: block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #60a5fa;
+        }
+
+        /* Overview & Logistics Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        .overview-card.logistics {
+            border-left: 4px solid #f59e0b; /* Orange border for logistics */
+        }
+
+        .overview-card h3 {
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .overview-card ul {
+            list-style-type: none;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .overview-card ul li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .overview-card ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        
+        .overview-card.logistics ul li::before {
+            color: #f59e0b;
+        }
+
+        .highlight-date {
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+
+        /* Modules Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        /* Corporate Cards */
+        /* Corporate Cards with TNG Logo */
         .card {
             background: white;
             border-radius: 8px;
             padding: 40px 30px;
             text-align: left;
             box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 10px 15px rgba(0,0,0,0.03);
-            border-top: 4px solid transparent;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            position: relative;
+            border-top: 4px solid #1e293b;
         }
 
         .card:hover {
@@ -238,10 +399,10 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 20px 25px rgba(0,0,0,0.05);
         }
 
-        /* Subtle color accents for each subject */
-        .card.oral { border-top-color: #3b82f6; }
-        .card.ecrit { border-top-color: #8b5cf6; }
-        .card.maths { border-top-color: #10b981; }
+        .card-logo {
+            width: 50px;
+            margin-bottom: 20px;
+        }
 
         .card h3 {
             font-size: 1.4rem;
@@ -285,30 +446,43 @@
             color: #64748b;
             font-size: 0.9rem;
             line-height: 1.8;
+            margin-top: 50px;
         }
 
         footer strong {
-            color: #334155;
+            color: #0f172a;
         }
 
         .office-link {
             color: #2563eb;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         .office-link:hover {
+            color: #1d4ed8;
             text-decoration: underline;
         }
 
-        /* Mobile Nav Adjustments */
+        .footer-logos {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logos img {
+            height: 30px;
+            opacity: 0.6;
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* In a real app, you'd add a hamburger menu here */
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .overview-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -317,19 +491,24 @@
     <div id="password-overlay">
         <div class="password-box">
             <img src="https://i.ibb.co/cczjjKjc/Chat-GPT-Image-Apr-30-2026-09-38-28-AM.png" alt="Tyler Nicholas">
-            <h2>Portal Access</h2>
-            <p>Please enter your secure access key to continue to BacPrep 2026.</p>
-            <input type="password" id="passInput" placeholder="Enter password" onkeypress="handleKeyPress(event)">
-            <button onclick="checkPassword()">Unlock Portal</button>
-            <p class="error-msg" id="errorMsg">Incorrect password. Try again.</p>
+            <h2>Accès Autorisé Uniquement</h2>
+            <p>Veuillez entrer votre clé d'accès sécurisée pour continuer vers BacPrep 2026.</p>
+            <input type="password" id="passInput" placeholder="Mot de passe" onkeypress="handleKeyPress(event)">
+            <button onclick="checkPassword()">Déverrouiller le Portail</button>
+            <p class="error-msg" id="errorMsg">Mot de passe incorrect. Réessayez.</p>
         </div>
     </div>
 
     <div id="main-content">
         
         <nav class="navbar">
-            <a href="#" class="nav-logo">BacPrep 2026</a>
+            <div class="nav-logo">
+                <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo">
+                BacPrep 2026
+            </div>
             <ul class="nav-links">
+                <li><a href="#motivation">Motivation</a></li>
+                <li><a href="#logistique">Logistique & BAC</a></li>
                 <li><a href="francais-oral/index.html">Français Oral</a></li>
                 <li><a href="francais-ecrit/index.html">Français Écrit</a></li>
                 <li><a href="maths/index.html">Mathématiques</a></li>
@@ -338,46 +517,99 @@
 
         <header class="hero">
             <h1>BacPrep 2026</h1>
-            <p>Your comprehensive study portal. Streamline your revision, organize your curriculum, and achieve academic excellence across all subjects.</p>
+            <p>Votre portail d'étude centralisé et sans distraction. Maîtrisez vos textes, structurez vos connaissances et visez l'excellence académique.</p>
             
             <div class="profile-container">
-                <img src="https://i.ibb.co/cczjjKjc/Chat-GPT-Image-Apr-30-2026-09-38-28-AM.png" alt="Tyler Nicholas Profile Picture">
+                <img src="https://i.ibb.co/cczjjKjc/Chat-GPT-Image-Apr-30-2026-09-38-28-AM.png" alt="Tyler Nicholas">
                 <div style="text-align: left;">
                     <strong style="display: block; font-size: 1rem; letter-spacing: 0.5px;">Tyler Nicholas</strong>
                 </div>
             </div>
         </header>
 
+        <div class="academic-framework">
+            <p>Cadre Académique Officiel</p>
+            <div class="logos-container">
+                <img src="https://headerbar.cned.fr/bibli/img/logo-cned.svg" alt="CNED Logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLart19cOUoRyop_-GvpBRQgFoJAlJIClDdA&s" alt="École Française des Seychelles Logo">
+            </div>
+        </div>
+
         <main class="container">
+            
+            <section id="motivation" class="motivation-box">
+                <p>"La préparation au BAC de Français et aux épreuves anticipées n'est pas une simple formalité, c'est la construction d'une pensée critique et structurée. La rigueur d'aujourd'hui garantit le succès de demain. Ce portail a été conçu pour éliminer le désordre et maximiser la concentration absolue."</p>
+                <strong>— Stratégie & Détermination</strong>
+            </section>
+
+            <div class="section-header" id="logistique">
+                <h2>Aperçu & Logistique - BAC Maurice 2026</h2>
+                <p>Informations officielles, calendrier des épreuves et organisation du voyage.</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card logistics">
+                    <h3>✈️ Informations Voyage (Classe de Première)</h3>
+                    <ul>
+                        <li><strong>Vols :</strong> Départ le <span class="highlight-date">06/06 à 13h25</span> — Retour le <span class="highlight-date">10/06 à 16h55</span>.</li>
+                        <li><strong>Centre d'examen :</strong> Lycée Français La Bourdonnais (Curepipe, Maurice).</li>
+                        <li><strong>Hébergement :</strong> UNICITY Student Residences (Flic en Flac). Chambre individuelle avec espace d'étude et Wi-Fi.</li>
+                        <li><strong>Accompagnateurs (1ère) :</strong> M. Frédéric Moga & Mme Morgane Lenoir.</li>
+                        <li><strong>Documents :</strong> Passeport valide (6 mois min.), Autorisation de sortie/entrée E-border, Assurance voyage.</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h3>📅 Calendrier des Épreuves (Première)</h3>
+                    <ul>
+                        <li><strong>Dimanche 7 Juin :</strong> Journée complète de révisions à la résidence.</li>
+                        <li><strong>Lundi 8 Juin :</strong> Épreuve de Français (Écrit) + Épreuve de Mathématiques.</li>
+                        <li><strong>Mardi 9 Juin :</strong> Épreuve de Français (Oral).</li>
+                        <li><strong>Mercredi 10 Juin :</strong> Retour aux Seychelles.</li>
+                        <li><strong>Résultats Officiels :</strong> Lundi 29 Juin (1er groupe) & Jeudi 2 Juillet (2ème groupe).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Modules de Révision</h2>
+                <p>Accédez aux bases de données structurées par matière.</p>
+            </div>
             <div class="grid">
-                <a href="francais-oral/index.html" class="card oral">
+                <a href="francais-oral/index.html" class="card">
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="card-logo">
                     <h3>Français Oral</h3>
-                    <p>Complete study guides, linear analyses, grammar breakdowns, and methodological frameworks for the 16 core texts.</p>
-                    <span class="card-link-text">Access Module</span>
+                    <p>Fiches complètes des 16 textes, analyses linéaires, questions de grammaire et méthodes pour l'entretien avec le jury.</p>
+                    <span class="card-link-text">Accéder au module</span>
                 </a>
 
-                <a href="francais-ecrit/index.html" class="card ecrit">
+                <a href="francais-ecrit/index.html" class="card">
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="card-logo">
                     <h3>Français Écrit</h3>
-                    <p>Advanced techniques for dissertation and literary commentary, alongside deep dives into historical literary movements.</p>
-                    <span class="card-link-text">Access Module</span>
+                    <p>Techniques avancées pour la dissertation et le commentaire composé. Mouvements littéraires et ressources stylistiques.</p>
+                    <span class="card-link-text">Accéder au module</span>
                 </a>
 
-                <a href="maths/index.html" class="card maths">
+                <a href="maths/index.html" class="card">
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="card-logo">
                     <h3>Mathématiques</h3>
-                    <p>Essential theorems, formula sheets, probability matrices, and structured practice exercises for the mathematics curriculum.</p>
-                    <span class="card-link-text">Access Module</span>
+                    <p>Fiches de théorèmes, exercices structurés, matrices de probabilité et aide-mémoire complet pour le programme de spécialité.</p>
+                    <span class="card-link-text">Accéder au module</span>
                 </a>
             </div>
+
         </main>
 
         <footer>
-            <p>&copy; 2026 BacPrep <strong>Tyler Nicholas</strong>. All rights reserved.</p>
-            <p>Sponsored and maintained by <a href="#" class="office-link">The Office of Tyler Nicholas</a>.</p>
+            <div class="footer-logos">
+                <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group">
+            </div>
+            <p>&copy; 2026 BacPrep <strong>Tyler Nicholas</strong>. Tous droits réservés.</p>
+            <p>Sponsorisé et géré par le <a href="https://tylernicholasgroup.com" class="office-link" target="_blank">Tyler Nicholas Group</a> et le <a href="https://nicholasoffice.online" class="office-link" target="_blank">Bureau de Tyler Nicholas</a>.</p>
         </footer>
     </div>
 
     <script>
-        // Base64 Encoded Password ('tylerwillpass.com')
+        // Mot de passe encodé en Base64 ('tylerwillpass.com')
         const encodedPass = 'dHlsZXJ3aWxscGFzcy5jb20=';
 
         function checkPassword() {
