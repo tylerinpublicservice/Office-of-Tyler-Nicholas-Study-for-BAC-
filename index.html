@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BacPrep 2026 | By Tyler Nicholas</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/cczjjKjc/Tyler-Nicholas-OFFICE-OF-TYLER-NICHOLAS.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* Base Styles */
@@ -17,8 +17,14 @@
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: #f8fafc;
+            color: #334155;
+            padding-top: 70px; /* Offset for fixed navbar */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         /* Password Overlay Screen */
@@ -28,7 +34,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #1e293b;
+            background-color: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,7 +46,7 @@
             background: white;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             text-align: center;
             max-width: 400px;
             width: 90%;
@@ -73,6 +79,10 @@
             outline: none;
         }
 
+        .password-box input:focus {
+            border-color: #2563eb;
+        }
+
         .password-box button {
             width: 100%;
             padding: 12px;
@@ -97,16 +107,57 @@
             display: none;
         }
 
-        /* Main Content Container (Hidden initially) */
+        /* Main Content Container */
         #main-content {
             display: none;
         }
 
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
                         url('https://img.travelnaut.com/web/db/photose/location/af/sc/all_of_seychelles/6692b2bf29721b2ac6ae94e720b34af3.jpeg?format=webp&width=3840&quality=75') center/cover no-repeat;
-            height: 60vh;
+            height: 55vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -120,13 +171,15 @@
             font-size: 3.5rem;
             margin-bottom: 15px;
             letter-spacing: -1px;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.15rem;
+            max-width: 650px;
             line-height: 1.6;
-            color: #e2e8f0;
+            color: #cbd5e1;
+            font-weight: 300;
         }
 
         /* Profile Section */
@@ -134,17 +187,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 30px;
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .profile-container img {
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             border: 2px solid white;
             object-fit: cover;
@@ -152,7 +206,7 @@
 
         /* Subject Grid */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: -50px auto 50px auto;
             padding: 0 20px;
             position: relative;
@@ -161,77 +215,100 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        /* Cards */
+        /* Corporate Cards */
         .card {
             background: white;
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03), 0 10px 15px rgba(0,0,0,0.03);
+            border-top: 4px solid transparent;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: flex-start;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08), 0 20px 25px rgba(0,0,0,0.05);
         }
 
-        .card.disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .card.disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+        /* Subtle color accents for each subject */
+        .card.oral { border-top-color: #3b82f6; }
+        .card.ecrit { border-top-color: #8b5cf6; }
+        .card.maths { border-top-color: #10b981; }
 
         .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: #0f172a;
+            font-weight: 600;
         }
 
         .card p {
             color: #64748b;
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
         }
 
-        .badge {
-            background-color: #e2e8f0;
-            color: #475569;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        .card-link-text {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
         }
 
-        .badge.active {
-            background-color: #dcfce7;
-            color: #166534;
+        .card-link-text::after {
+            content: "→";
+            margin-left: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-link-text::after {
+            transform: translateX(4px);
         }
 
         /* Footer */
         footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
             text-align: center;
-            padding: 30px;
-            color: #94a3b8;
+            padding: 40px 20px;
+            color: #64748b;
             font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: #334155;
+        }
+
+        .office-link {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .office-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Nav Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* In a real app, you'd add a hamburger menu here */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -240,8 +317,8 @@
     <div id="password-overlay">
         <div class="password-box">
             <img src="https://i.ibb.co/cczjjKjc/Chat-GPT-Image-Apr-30-2026-09-38-28-AM.png" alt="Tyler Nicholas">
-            <h2>Authorized Access Only</h2>
-            <p>Welcome to BacPrep 2026. Please enter your access key to continue.</p>
+            <h2>Portal Access</h2>
+            <p>Please enter your secure access key to continue to BacPrep 2026.</p>
             <input type="password" id="passInput" placeholder="Enter password" onkeypress="handleKeyPress(event)">
             <button onclick="checkPassword()">Unlock Portal</button>
             <p class="error-msg" id="errorMsg">Incorrect password. Try again.</p>
@@ -249,74 +326,76 @@
     </div>
 
     <div id="main-content">
+        
+        <nav class="navbar">
+            <a href="#" class="nav-logo">BacPrep 2026</a>
+            <ul class="nav-links">
+                <li><a href="francais-oral/index.html">Français Oral</a></li>
+                <li><a href="francais-ecrit/index.html">Français Écrit</a></li>
+                <li><a href="maths/index.html">Mathématiques</a></li>
+            </ul>
+        </nav>
+
         <header class="hero">
             <h1>BacPrep 2026</h1>
-            <p>Your centralized, distraction-free study portal. Master the 16 texts, perfect your methodology, and secure that 20/20.</p>
+            <p>Your comprehensive study portal. Streamline your revision, organize your curriculum, and achieve academic excellence across all subjects.</p>
             
             <div class="profile-container">
                 <img src="https://i.ibb.co/cczjjKjc/Chat-GPT-Image-Apr-30-2026-09-38-28-AM.png" alt="Tyler Nicholas Profile Picture">
                 <div style="text-align: left;">
-                    <strong style="display: block; font-size: 1.1rem;">Tyler Nicholas</strong>
-                    <span style="font-size: 0.9rem; color: #cbd5e1;">Candidate - Première</span>
+                    <strong style="display: block; font-size: 1rem; letter-spacing: 0.5px;">Tyler Nicholas</strong>
                 </div>
             </div>
         </header>
 
         <main class="container">
             <div class="grid">
-                <a href="francais-oral/" class="card">
-                    <div class="icon">🗣️</div>
+                <a href="francais-oral/index.html" class="card oral">
                     <h3>Français Oral</h3>
-                    <p>Complete study guides for the 16 texts, grammar breakdowns, and oral exam methodology.</p>
-                    <span class="badge active">Available Now</span>
+                    <p>Complete study guides, linear analyses, grammar breakdowns, and methodological frameworks for the 16 core texts.</p>
+                    <span class="card-link-text">Access Module</span>
                 </a>
 
-                <a href="francais-ecrit/" class="card disabled" onclick="event.preventDefault();">
-                    <div class="icon">✍️</div>
+                <a href="francais-ecrit/index.html" class="card ecrit">
                     <h3>Français Écrit</h3>
-                    <p>Dissertation and commentary methodologies, practice prompts, and literary movements.</p>
-                    <span class="badge">Not Available Yet</span>
+                    <p>Advanced techniques for dissertation and literary commentary, alongside deep dives into historical literary movements.</p>
+                    <span class="card-link-text">Access Module</span>
                 </a>
 
-                <a href="maths/" class="card disabled" onclick="event.preventDefault();">
-                    <div class="icon">📐</div>
+                <a href="maths/index.html" class="card maths">
                     <h3>Mathématiques</h3>
-                    <p>Formulas, practice exercises, functions, geometry, and probability cheat sheets.</p>
-                    <span class="badge">Not Available Yet</span>
+                    <p>Essential theorems, formula sheets, probability matrices, and structured practice exercises for the mathematics curriculum.</p>
+                    <span class="card-link-text">Access Module</span>
                 </a>
             </div>
         </main>
 
         <footer>
-            &copy; 2026 BacPrep By Tyler Nicholas. All rights reserved.
+            <p>&copy; 2026 BacPrep <strong>Tyler Nicholas</strong>. All rights reserved.</p>
+            <p>Sponsored and maintained by <a href="#" class="office-link">The Office of Tyler Nicholas</a>.</p>
         </footer>
     </div>
 
     <script>
-        // Obfuscated password check using Base64
-        // 'dHlsZXJ3aWxscGFzcy5jb20=' is 'tylerwillpass.com' encoded in Base64
+        // Base64 Encoded Password ('tylerwillpass.com')
         const encodedPass = 'dHlsZXJ3aWxscGFzcy5jb20=';
 
         function checkPassword() {
             const input = document.getElementById('passInput').value;
             const errorMsg = document.getElementById('errorMsg');
             
-            // Encode the input and compare it to the stored encoded password
             if (btoa(input) === encodedPass) {
-                // Hide overlay, show main content
                 document.getElementById('password-overlay').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('password-overlay').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
                 }, 500);
             } else {
-                // Show error
                 errorMsg.style.display = 'block';
                 document.getElementById('passInput').value = '';
             }
         }
 
-        // Allow pressing 'Enter' to submit
         function handleKeyPress(e) {
             if (e.key === 'Enter') {
                 checkPassword();
